@@ -1,4 +1,5 @@
-// a Typescript class is all we need to create a model
+// a Typescript class is all we need to create a model, there is no @Model decorator
+
 export class Recipe {
     public name: string
     public description: string
