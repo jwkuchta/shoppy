@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
   title = 'recipe-book';
+  option;
+
+  onLinkClicked(data) {
+    console.log("data", data)
+    this.option = data.option
+    console.log("this.option", this.option)
+  }
 }
