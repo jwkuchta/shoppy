@@ -1,6 +1,7 @@
-<!-- <a
+<a
 href='#' 
 class="list-group-item clearfix" 
+(click)="onRecipeClick()"
 >
 
     <div class="pull-left">
@@ -21,31 +22,31 @@ class="list-group-item clearfix"
 
     </span>
 
-</a> -->
+</a>
 
 <!-- HIS SOLUTION BELOW -->
 
-<a
+<!-- <a
 href='#' 
 class="list-group-item clearfix" 
 >
 
     <div class="pull-left">
 
-        <h4 class="list-group-item-heading">{{ recipe.name }}</h4>
-        <p class="list-group-item-text">{{ recipe.description }}</p>
+        <h4 class="list-group-item-heading">{{ recipeProp.name }}</h4>
+        <p class="list-group-item-text">{{ recipeProp.description }}</p>
 
     </div>
 
     <span class="pull-right">
 
         <img 
-        [src]=recipe.imagePath
-        alt="{{ recipe.name }}" 
+        [src]=recipeProp.imagePath
+        alt="{{ recipeProp.name }}" 
         class="img-responsive" 
         style="max-height: 100px"
         >
 
     </span>
 
-</a>
+</a> -->

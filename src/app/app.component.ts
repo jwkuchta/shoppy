@@ -15,4 +15,5 @@ export class AppComponent {
     this.option = data.option
     console.log("this.option", this.option)
   }
+  
 }
