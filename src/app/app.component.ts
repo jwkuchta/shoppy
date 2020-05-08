@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
 
   title = 'recipe-book';
-  option;
+  option = 'recipes';
 
   onLinkClicked(data) {
     console.log("data", data)
