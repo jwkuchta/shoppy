@@ -1,14 +1,18 @@
 // a Typescript class is all we need to create a model, there is no @Model decorator
 
-export class Recipe {
-    public name: string
-    public description: string
-    public imagePath: string
+// export class Recipe {
+//     public name: string
+//     public description: string
+//     public imagePath: string
     
-    constructor(name: string, description: string, imagePath: string) {
-        this.name = name
-        this.description = description
-        this.imagePath = imagePath
-    }
+//     constructor(name: string, description: string, imagePath: string) {
+//         this.name = name
+//         this.description = description
+//         this.imagePath = imagePath
+//     }
 
+// }
+
+export class Recipe {
+    constructor(public name: string, public description: string, public imagePath: string) {}
 }
