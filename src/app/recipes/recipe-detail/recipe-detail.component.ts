@@ -15,4 +15,8 @@ export class RecipeDetailComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onButtonClick(event) {
+    // console.log('you clicked a dropdown button', event)
+  }
+
 }
