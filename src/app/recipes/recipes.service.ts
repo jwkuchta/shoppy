@@ -1,7 +1,9 @@
 import { Recipe } from './recipe.model'
-import { EventEmitter } from '@angular/core'
+import { EventEmitter, Injectable } from '@angular/core'
 import { Ingredient } from '../shared/ingredient.model'
+import { ShoppingListService } from '../shopping-list/shopping-list.service'
 
+@Injectable()
 export class RecipesService {
     recipeSelected = new EventEmitter<Recipe>()
 
@@ -32,8 +34,14 @@ export class RecipesService {
             ])
     ]
 
+    constructor(private slService: ShoppingListService) {}
+
     getRecipes() {
-        // makes a copy so we do not modify the original array
         return this.recipes.slice()
     }
+
+    // his solution, going through the RecipesService to add ingredients to the shopping list
+    // addItemsToList(ingredients: Ingredient[]) {
+    //     this.slService.addIngredients(ingredients)
+    // }
 }
