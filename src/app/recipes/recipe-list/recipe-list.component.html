@@ -9,10 +9,6 @@
 
             <app-recipe-item 
             *ngFor="let recipe of recipes"
-            [name]="recipe.name"
-            [description]="recipe.description"
-            [src]="recipe.imagePath"
-            (recipeSelected)="onRecipeSelected(recipe)"
             [recipeProp]="recipe"
             ></app-recipe-item>
 
