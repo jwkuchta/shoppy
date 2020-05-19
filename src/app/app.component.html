@@ -7,8 +7,10 @@
   <div class='row'>
       <div class="col-md-12">
 
-        <app-recipes *ngIf="option === 'recipes'"></app-recipes>
-        <app-shopping-list *ngIf="option === 'shopping-list'"></app-shopping-list>
+        <!-- <app-recipes *ngIf="option === 'recipes'"></app-recipes> -->
+        <!-- <app-shopping-list *ngIf="option === 'shopping-list'"></app-shopping-list> -->
+
+        <router-outlet></router-outlet>
 
       </div>
   </div> 
