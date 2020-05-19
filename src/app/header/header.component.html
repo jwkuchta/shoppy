@@ -2,21 +2,29 @@
     <div class="container-fuid">
 
         <div class="navbar-header">
-            <a href="#" class="navbar-brand"> Recipe Book </a>
+            <a tyle="cursor: pointer;" class="navbar-brand"> Recipe Book </a>
         </div>
         
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li><a routerLink='/recipes' id="recipes" (click)="onOptionSelect($event)"> Recipes </a></li>
-                <li><a routerLink='/shoppinglist' id="shopping-list" (click)="onOptionSelect($event)"> Shopping List </a></li>
+                <li routerLinkActive='active'><a 
+                    routerLink='/recipes' 
+                    id="recipes" 
+                    (click)="onOptionSelect($event)"> 
+                    Recipes </a></li>
+                <li routerLinkActive='active'><a 
+                    routerLink='/shopping-list' 
+                    id="shopping-list" 
+                    (click)="onOptionSelect($event)"> 
+                    Shopping List </a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown" appDropdown>
-                    <a href="#" class="dropdown-toggle" role="button"> Manage <span class="caret"></span></a>
+                    <a tyle="cursor: pointer;" class="dropdown-toggle" role="button"> Manage <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#"> Save Data </a></li>
-                        <li><a href="#"> Get Data </a></li>
+                        <li><a tyle="cursor: pointer;"> Save Data </a></li>
+                        <li><a tyle="cursor: pointer;"> Get Data </a></li>
                     </ul>
                 </li>
             </ul>
