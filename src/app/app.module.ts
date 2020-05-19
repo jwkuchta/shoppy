@@ -16,6 +16,7 @@ import { RecipesService } from './recipes/recipes.service';
 // import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { StartComponent } from './recipes/start/start.component';
+import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { StartComponent } from './recipes/start/start.component';
     ShoppingListComponent,
     ShoppingListEditComponent,
     DropdownDirective,
-    StartComponent
+    StartComponent,
+    RecipeEditComponent
   ],
   imports: [
     BrowserModule,
