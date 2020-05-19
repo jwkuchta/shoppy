@@ -9,6 +9,7 @@ export class RecipesService {
 
     private recipes: Recipe[] = [
         new Recipe(
+            1,
             'Test Recipe', 
             'This is a testy test', 
             'https://img.hellofresh.com/f_auto,fl_lossy,q_auto,w_610/hellofresh_s3/image/mediterranean-hummus-couscous-bowls-9aa1b9c2.jpg', 
@@ -17,6 +18,7 @@ export class RecipesService {
                 new Ingredient('testy sauce', 2)
             ]),
         new Recipe(
+            2,
             'Buttered Chinken', 
             'this is one of my favorites', 
             'https://cafedelites.com/wp-content/uploads/2019/01/Butter-Chicken-IMAGE-64.jpg', 
@@ -25,6 +27,7 @@ export class RecipesService {
                 new Ingredient('butter', 2)
             ]),
         new Recipe(
+            3,
             'Mongolian Beef', 
             'Diego likes this one', 
             'https://omnivorescookbook.com/wp-content/uploads/2018/05/1805_Mongolian-Beef_550.jpg', 
@@ -38,6 +41,10 @@ export class RecipesService {
 
     getRecipes() {
         return this.recipes.slice()
+    }
+
+    getRecipe(id: number) {
+        return this.recipes[id]
     }
 
     // his solution, going through the RecipesService to add ingredients to the shopping list

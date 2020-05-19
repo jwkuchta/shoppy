@@ -3,13 +3,15 @@
         <button class="btn btn-success">New Recipe</button>
     </div>
     <hr>
+    <h3>Select recipe to see details</h3>
     <div class="row">
         
         <div class="col-xs-12">
 
             <app-recipe-item 
-            *ngFor="let recipe of recipes"
+            *ngFor="let recipe of recipes; let i = index"
             [recipeProp]="recipe"
+            [index]='i'
             ></app-recipe-item>
 
         </div>
