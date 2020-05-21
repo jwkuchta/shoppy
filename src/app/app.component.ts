@@ -7,13 +7,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  title = 'recipe-book';
-  option = 'recipes';
+  // NO LONGER NEEDED DUE TO IMPLEMENTING ROUTER
+  // title = 'recipe-book';
+  // option = 'recipes';
 
-  onLinkClicked(data) {
-    console.log("data", data)
-    this.option = data.option
-    console.log("this.option", this.option)
-  }
+  // onLinkClicked(data) {
+  //   console.log("data", data)
+  //   this.option = data.option
+  //   console.log("this.option", this.option)
+  // }
   
 }
