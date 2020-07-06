@@ -10,6 +10,7 @@
                     class="form-control"
                     name="name"
                     ngModel
+                    required
                     >
                 </div>
                 <div class="col-sm-2 form-group">
@@ -20,11 +21,13 @@
                     class="form-control"
                     name="amount"
                     ngModel
+                    required
+                    pattern="^[1-9]+[0-9]*$"
                     >
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
-                        <button class="btn btn-success" type="submit"> Add </button>
+                        <button class="btn btn-success" type="submit" [disabled]="!form.valid"> Add </button>
                         <button class="btn btn-danger" type="button"> Delete </button>
                         <button class="btn btn-primary" type="button"> Clear </button>
                     </div>
@@ -41,6 +44,8 @@
 <!-- 3. MOVE THE LISTENER TO THE FORM TAG WITH NGSUBMIT -->
 <!-- 4. ADD LOCAL REFERENCE TO GET ACCESS TO THE JS OBJECT OF THE FORM and pass it on to the ngSubmit -->
 <!-- 5. ADD NGMODEL TO ADD CONTROLS -->
+<!-- 6. ADD VALIDATIONS, use pattern to validate the amount-->
+<!-- 7. ONLY ACCEPT AMOUNT > 0 WITH A REGEX, WE CAN OMIT SQUARE BRACKETS SINCE WE ARE BINDING TO A STRING -->
 
 <!-- <div class="row">
     <div class="col-xs-12">
