@@ -1,5 +1,49 @@
 <div class="row">
     <div class="col-xs-12">
+        <form (ngSubmit)="onAddNewIngredient(form)" #form="ngForm">
+            <div class="row">
+                <div class="col-sm-5 form-group">
+                    <label for="name"> Name </label>
+                    <input 
+                    type="text" 
+                    id="name" 
+                    class="form-control"
+                    name="name"
+                    ngModel
+                    >
+                </div>
+                <div class="col-sm-2 form-group">
+                    <label for="amount"> Amount </label>
+                    <input 
+                    type="number" 
+                    id="amount" 
+                    class="form-control"
+                    name="amount"
+                    ngModel
+                    >
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <button class="btn btn-success" type="submit"> Add </button>
+                        <button class="btn btn-danger" type="button"> Delete </button>
+                        <button class="btn btn-primary" type="button"> Clear </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- BELOW IS THE PREVIOUS OPTION WITHOUT THE TEMPLATE DRIVEN APPROACH-->
+
+<!-- 1. REMOVE ADD CLICK LISTENER -->
+<!-- 2. REMOVE LOCAL REFERENCES #NAMEINPUT AND #AMOUNTINPUT -->
+<!-- 3. MOVE THE LISTENER TO THE FORM TAG WITH NGSUBMIT -->
+<!-- 4. ADD LOCAL REFERENCE TO GET ACCESS TO THE JS OBJECT OF THE FORM and pass it on to the ngSubmit -->
+<!-- 5. ADD NGMODEL TO ADD CONTROLS -->
+
+<!-- <div class="row">
+    <div class="col-xs-12">
         <form>
             <div class="row">
                 <div class="col-sm-5 form-group">
@@ -22,10 +66,7 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
-                        <button 
-                        class="btn btn-success" 
-                        type="submit"
-                        > Add </button>
+                        <button class="btn btn-success" type="submit" (click)="onAddNewIngredient()"> Add </button>
                         <button class="btn btn-danger" type="button"> Delete </button>
                         <button class="btn btn-primary" type="button"> Clear </button>
                     </div>
@@ -33,4 +74,5 @@
             </div>
         </form>
     </div>
-</div>
+</div> -->
+
