@@ -11,6 +11,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./shopping-list-edit.component.css']
 })
 export class ShoppingListEditComponent implements OnInit, OnDestroy {
+  // why do we need the ViewChild if we already have access to the form?
   @ViewChild('form') slForm: NgForm
   subsciption: Subscription
   editMode = false
@@ -34,13 +35,24 @@ export class ShoppingListEditComponent implements OnInit, OnDestroy {
     )
   }
 
-  onAddItem(form: NgForm) {
+  onSubmit(form: NgForm) {
     console.log(form)
     const value = form.value
     const newIngredient = new Ingredient(value.name, value.amount)
 
-    if ( this.editMode ) this.shoppingListService.updateIngredient(this.editedItemIndex, newIngredient)
-    else this.shoppingListService.addIngredient(newIngredient)
+    if ( this.editMode ) {
+      this.shoppingListService.updateIngredient(this.editedItemIndex, newIngredient)
+    } else {
+      this.shoppingListService.addIngredient(newIngredient)
+    } 
+    // it appears to work as expected but we are stuck in editMode. It is important we leave the editMode
+    this.editMode = false
+    form.reset()
+  }
+
+  onClear() {
+    this.slForm.reset()
+    this.editMode = false
   }
 
   ngOnDestroy() {
