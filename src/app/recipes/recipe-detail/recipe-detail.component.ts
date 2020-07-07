@@ -45,6 +45,11 @@ export class RecipeDetailComponent implements OnInit {
     this.recipeService.deleteRecipe(this.recipe)
   }
 
+  // his solution
+  // onRecipeDelete() {
+  //   this.recipeService.deleteRecipe(this.id)
+  // }
+
 }
 
 // HIS SOLUTION - GOING THROUGH THE RECIPESERVICE

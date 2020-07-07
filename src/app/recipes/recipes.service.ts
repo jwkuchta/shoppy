@@ -71,4 +71,10 @@ export class RecipesService {
         this.recipes = this.recipes.filter(rec => rec !== recipe)
         this.recipeChanged.next(this.recipes.slice())
     }
+
+    // his solution
+    // deleteRecipe(index: number) {
+    //     this.recipes.splice(index, 1)
+    //     this.recipeChanged.next(this.recipes.slice())
+    // }
 }
