@@ -62,7 +62,6 @@ export class RecipeEditComponent implements OnInit {
 
   onSubmit() {
     let recipe = this.recipeForm.value
-    console.log(recipe)
     if (this.editMode) this.recipeService.updateRecipe(this.id, recipe)
     else this.recipeService.addRecipe(recipe)
     this.onCancel()
@@ -75,6 +74,10 @@ export class RecipeEditComponent implements OnInit {
         'amount': new FormControl(null, [Validators.required, Validators.pattern(/^[1-9]+[0-9]*$/)])
       })
     )
+  }
+
+  onDeleteIngredient(index: number) {
+    (<FormArray>this.recipeForm.get('ingredients')).removeAt(index)
   }
 
   onCancel() {
