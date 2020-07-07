@@ -41,6 +41,12 @@ export class ShoppingListService {
         // emit the changed ingredient
         this.ingredientsChanged.next(this.ingredients.slice())
     }
+
+    deleteIngredient(index: number) {
+        let deleted = this.getIngredient(index)
+        this.ingredients = this.ingredients.filter(ing => ing !== deleted)
+        this.ingredientsChanged.next(this.ingredients.slice())
+    }
         
 }
 
