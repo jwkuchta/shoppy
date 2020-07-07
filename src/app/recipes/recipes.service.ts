@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core'
 import { Ingredient } from '../shared/ingredient.model'
 import { ShoppingListService } from '../shopping-list/shopping-list.service'
 import { Subject } from 'rxjs'
+import { ThrowStmt } from '@angular/compiler'
 
 @Injectable()
 export class RecipesService {
@@ -63,6 +64,11 @@ export class RecipesService {
     updateRecipe(index: number, recipe: Recipe) {
         this.recipes[index] = recipe
         // listen to this event in recipe-list component
+        this.recipeChanged.next(this.recipes.slice())
+    }
+
+    deleteRecipe(recipe: Recipe) {
+        this.recipes = this.recipes.filter(rec => rec !== recipe)
         this.recipeChanged.next(this.recipes.slice())
     }
 }
