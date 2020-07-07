@@ -42,11 +42,16 @@ export class ShoppingListService {
         this.ingredientsChanged.next(this.ingredients.slice())
     }
 
-    deleteIngredient(index: number) {
-        let deleted = this.getIngredient(index)
-        this.ingredients = this.ingredients.filter(ing => ing !== deleted)
+    deleteIngredient(ingr: Ingredient) {
+        this.ingredients = this.ingredients.filter(ing => ing !== ingr)
         this.ingredientsChanged.next(this.ingredients.slice())
     }
+
+    // deleteIngredient(index: number) {
+    //     let deleted = this.getIngredient(index)
+    //     this.ingredients = this.ingredients.filter(ing => ing !== deleted)
+    //     this.ingredientsChanged.next(this.ingredients.slice())
+    // }
         
 }
 
