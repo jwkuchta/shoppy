@@ -78,6 +78,9 @@ export class RecipeEditComponent implements OnInit {
 
   onDeleteIngredient(index: number) {
     (<FormArray>this.recipeForm.get('ingredients')).removeAt(index)
+
+    // below method available since Angular 8 will clear the whole array
+    // (<FormArray>this.recipeForm.get('ingredients')).clear();
   }
 
   onCancel() {
