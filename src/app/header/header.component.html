@@ -26,7 +26,9 @@
                     <a style="cursor: pointer" (click)="onLogout()">Logout</a>
                 </li>
                 <li class="dropdown" appDropdown *ngIf='isAuthenticated' >
-                    <a tyle="cursor: pointer;" class="dropdown-toggle" role="button"> Manage <span class="caret"></span></a>
+                    <a style="cursor: pointer;" class="dropdown-toggle" role="button"> 
+                        Manage <span class="caret"></span>
+                    </a>
                     <ul class="dropdown-menu">
                         <li><a tyle="cursor: pointer;" (click)="onSaveData()"> Save Data </a></li>
                         <li><a tyle="cursor: pointer;" (click)="onFetchData()"> Get Data </a></li>
