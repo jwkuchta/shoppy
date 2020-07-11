@@ -23,9 +23,11 @@
     "dotenv": "^8.2.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
+    "yargs": "^15.4.1",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
+    "@angular-builders/custom-webpack": "^9.2.0",
     "@angular-devkit/build-angular": "~0.901.1",
     "@angular/cli": "~9.1.1",
     "@angular/compiler-cli": "~9.1.1",
