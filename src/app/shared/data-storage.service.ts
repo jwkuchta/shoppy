@@ -21,31 +21,26 @@ export class DataStorageService {
         this.http.put(url, recipes).subscribe(resp => console.log(resp))
     }
 
-    fetchRecipes() {
-        // take allows us to only receive the value once, when we fetch, we get the user once from the obs
-        // we do not want an ongoing subscription and it will automatically unsubscribe after 1st time
-        // we are combining two observables into one, we get the user from the first observable,
-        // exhaustMap waits for the result of take to complete and then passes the result
-        // we start with user observable, but then return the function we pass on to the exhaustMap (our http req)
-        // return this.authService.user.pipe(
-        //     take(1), 
-        //     exhaustMap(user => this.http.get<Recipe[]>(url)),
-        //     map(recipes => {
-        //         return recipes.map(recipe => {
-        //             return {...recipe, ingredients: recipe.ingredients ? recipe.ingredients : []}
-        //         })
-        //     }),
-        //     tap(recipes => this.recService.setRecipes(recipes))
-        // )
+    // fetchRecipes() {
+    //     return this.authService.user.pipe(
+    //         take(1), 
+    //         exhaustMap(user => this.http.get<Recipe[]>(url + '?auth=' + user.token)), // ** see below for alternative
+    //         map(recipes => recipes.map(recipe => {
+    //                 return {...recipe, ingredients: recipe.ingredients ? recipe.ingredients : []}
+    //             })
+    //         ),
+    //         tap(recipes => this.recService.setRecipes(recipes))
+    //     )
+    // }
 
-        return this.authService.user.pipe(
-            take(1), 
-            exhaustMap(user => this.http.get<Recipe[]>(url + '?auth=' + user.token)), // ** see below for alternative
+    // adding token was later outsourced to auth-interceptor.service.ts so the function changed to:
+    fetchRecipes() {
+        return this.http.get<Recipe[]>(url).pipe(
             map(recipes => recipes.map(recipe => {
-                    return {...recipe, ingredients: recipe.ingredients ? recipe.ingredients : []}
-                })
-            ),
-            tap(recipes => this.recService.setRecipes(recipes))
+                return {...recipe, ingredients: recipe.ingredients ? recipe.ingredients : []}
+            })
+        ),
+        tap(recipes => this.recService.setRecipes(recipes))
         )
     }
 } 
