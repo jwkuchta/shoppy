@@ -28,6 +28,7 @@ export class AuthService {
     // BehaviorSubject lets us receive the user info even after the user has been emitted, 
     // we can access data on demand. Has to be initialized with an initial value (null here)
     user = new BehaviorSubject<User>(null)
+    private tokenExpTimer: any
 
     constructor(private http: HttpClient, private router: Router) {}
    
@@ -72,6 +73,10 @@ export class AuthService {
         
         if (currentUser.token) {
             this.user.next(currentUser)
+            const exp = new Date(userData._tokenExpDate).getTime()
+            const timeNow = new Date().getTime()
+            const tokenTimeLeft = exp - timeNow
+            this.autoLogout(tokenTimeLeft)
         }
     }
 
@@ -79,6 +84,17 @@ export class AuthService {
         // sets the used to null
         this.user.next(null)
         this.router.navigate(['/auth'])
+        localStorage.removeItem('userData')
+        if (this.tokenExpTimer) {
+            clearTimeout(this.tokenExpTimer)
+        }
+        this.tokenExpTimer = null
+    }
+
+    autoLogout(expirationDuration: number) {
+        this.tokenExpTimer = setTimeout(() => {
+            this.logout()
+        }, expirationDuration)
     }
 
     private handleError(error: HttpErrorResponse) {
@@ -104,6 +120,7 @@ export class AuthService {
         const expDate = new Date(new Date().getTime() + +expiresIn * 1000)
         const user = new User(email, userId, token, expDate)
         this.user.next(user)
+        this.autoLogout(expiresIn * 1000) // time in miliseconds
         localStorage.setItem('userData', JSON.stringify(user))
     }
 
