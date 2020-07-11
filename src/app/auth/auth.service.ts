@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 import { throwError, Subject, BehaviorSubject } from 'rxjs';
 import { User } from './user.model'
+import { Router } from '@angular/router';
 // import { environment } from 'src/environments/.env';
 
 const apiKey = 'AIzaSyBjDwUU70ZOQSh3_GnOb5aoz4fKBiG7508'
@@ -28,7 +29,7 @@ export class AuthService {
     // we can access data on demand. Has to be initialized with an initial value (null here)
     user = new BehaviorSubject<User>(null)
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient, private router: Router) {}
    
     signup(email: string, password: string) {
         // from line 7
@@ -57,6 +58,13 @@ export class AuthService {
                 this.handleAuth(resData.email, resData.localId, resData.idToken, resData.expiresIn)
             })
         )
+    }
+
+    logout() {
+        // sets the used to null
+        this.user.next(null)
+        this.router.navigate(['/auth'])
+
     }
 
     private handleError(error: HttpErrorResponse) {
