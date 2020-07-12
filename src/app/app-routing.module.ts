@@ -1,22 +1,10 @@
 import { NgModule } from '@angular/core'
 import { Routes, RouterModule } from '@angular/router'
-import { RecipesComponent } from './recipes/recipes.component';
-// import { RecipeListComponent } from './recipes/recipe-list/recipe-list.component';
-// import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
-// import { RecipeItemComponent } from './recipes/recipe-list/recipe-item/recipe-item.component';
-import { ShoppingListComponent } from './shopping-list/shopping-list.component';
-import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
-import { StartComponent } from './recipes/start/start.component';
-import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
-import { RecipesResolverService } from './recipes/recipes-resolver.service';
 import { AuthComponent } from './auth/auth.component';
-import { AuthGuard } from './auth/auth.guard';
-// import { ShoppingListEditComponent } from './shopping-list/shopping-list-edit/shopping-list-edit.component';
 
 const appRoutes: Routes = [
-    { path: 'shopping-list', component: ShoppingListComponent },
-    { path: 'auth', component: AuthComponent},
-    { path: '**', redirectTo: '/recipes', pathMatch: 'full' }
+    { path: '', redirectTo: '/recipes', pathMatch: 'full'},
+    { path: 'auth', component: AuthComponent} 
 ]
 
 @NgModule({
@@ -24,4 +12,4 @@ const appRoutes: Routes = [
     exports: [RouterModule]
 })
 
-export class AppRoutingModule {}
+export class AppRoutingModule { }

@@ -41,3 +41,4 @@ export class RecipesModule {}
 
 // Angular parses every module separately so we have to import every module our modules use in here
 // it is not enough to have access to those modules in AppModule. Services are the exception
+// it is important to have all the components DECLARED AND EXPORTED
