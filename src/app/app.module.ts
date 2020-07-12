@@ -16,6 +16,7 @@ import { AuthComponent } from './auth/auth.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { AuthInterceptorService } from './auth/auth-intercepror.service';
 import { AlertComponent } from './shared/alert/alert.component';
+import { RecipesModule } from './recipes/recipes.module';
 // import { PlaceholderDirective } from './shared/placeholder/placeholder.directive';
 
 @NgModule({
@@ -37,6 +38,7 @@ import { AlertComponent } from './shared/alert/alert.component';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    RecipesModule
   ],
   // we provide our interceptor that adds user.token to the request here
   providers: [
