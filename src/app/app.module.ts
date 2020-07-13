@@ -30,6 +30,8 @@ import { LoggingService } from './logging.service';
   bootstrap: [AppComponent],
   // entryComponents: [AlertComponent]
   // exports: [RouterModule]
-  providers: [LoggingService]
 })
 export class AppModule { }
+
+// as a good rule, provide services in app module or through the @Injectable in root to avoid bugs
+// and different service instances being created
