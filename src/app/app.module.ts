@@ -16,6 +16,7 @@ import { AuthInterceptorService } from './auth/auth-intercepror.service';
 import { AlertComponent } from './shared/alert/alert.component';
 import { RecipesModule } from './recipes/recipes.module';
 import { ShoppingListModule } from './shopping-list/shopping-list.module';
+import { CoreModule } from './core.module';
 // import { PlaceholderDirective } from './shared/placeholder/placeholder.directive';
 
 @NgModule({
@@ -36,14 +37,16 @@ import { ShoppingListModule } from './shopping-list/shopping-list.module';
     ReactiveFormsModule,
     HttpClientModule,
     RecipesModule,
-    ShoppingListModule
+    ShoppingListModule,
+    CoreModule
   ],
   // we provide our interceptor that adds user.token to the request here
-  providers: [
-    ShoppingListService, 
-    RecipesService, 
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true }
-  ],
+  // moved providers to core module
+  // providers: [
+  //   ShoppingListService, 
+  //   RecipesService, 
+  //   { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true }
+  // ],
   bootstrap: [AppComponent],
   // entryComponents: [AlertComponent]
   // exports: [RouterModule]
