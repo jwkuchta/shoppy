@@ -3,7 +3,6 @@ import { AuthComponent } from './auth.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { CoreModule } from '../core.module';
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
@@ -17,7 +16,8 @@ import { SharedModule } from '../shared/shared.module';
         FormsModule,
         CommonModule,
         RouterModule.forChild([
-            { path: 'auth', component: AuthComponent }
+            // left empty for lazy loading
+            { path: '', component: AuthComponent }
         ]),
         SharedModule
     ]
