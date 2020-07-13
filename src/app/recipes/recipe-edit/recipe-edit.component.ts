@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import { RecipesService } from '../recipes.service';
-import { Ingredient } from 'src/app/shared/ingredient.model';
-import { Recipe } from '../recipe.model';
+// import { Ingredient } from 'src/app/shared/ingredient.model';
+// import { Recipe } from '../recipe.model';
 import { Router } from '@angular/router'
 
 @Component({
@@ -18,7 +18,8 @@ export class RecipeEditComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private recipeService: RecipesService,
-              private router: Router) { }
+              private router: Router
+              ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {

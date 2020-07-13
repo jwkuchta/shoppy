@@ -22,7 +22,7 @@ const appRoutes: Routes = [
 
 @NgModule({
     // pre-loads for lazy loading
-    imports: [RouterModule.forRoot(appRoutes, {preloadingStrategy: PreloadAllModules})],
+    imports: [RouterModule.forRoot(appRoutes, { preloadingStrategy: PreloadAllModules })],
     exports: [RouterModule]
 })
 
