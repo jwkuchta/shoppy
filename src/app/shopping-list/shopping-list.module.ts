@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
         FormsModule, 
         CommonModule, // unlocks ngFor and ngIf
         RouterModule.forChild([
-            // path left empty for lazy loafing
+            // path left empty for lazy loading
             { path: '', component: ShoppingListComponent }
         ])
     ],

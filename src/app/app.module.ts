@@ -7,7 +7,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http'
 // import { ShoppingListModule } from './shopping-list/shopping-list.module';
 import { CoreModule } from './core.module';
-import { AuthModule } from './auth/auth.module';
+import { LoggingService } from './logging.service';
+// import { AuthModule } from './auth/auth.module';
 // import { PlaceholderDirective } from './shared/placeholder/placeholder.directive';
 
 @NgModule({
@@ -20,7 +21,7 @@ import { AuthModule } from './auth/auth.module';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    // for lazy loading to work we must not import RecipesModule here in app module
+    // for lazy loading to work we must not import RecipesModule here in app module to avoid eager loading
     // RecipesModule,
     // ShoppingListModule,
     CoreModule,
@@ -29,5 +30,6 @@ import { AuthModule } from './auth/auth.module';
   bootstrap: [AppComponent],
   // entryComponents: [AlertComponent]
   // exports: [RouterModule]
+  providers: [LoggingService]
 })
 export class AppModule { }
