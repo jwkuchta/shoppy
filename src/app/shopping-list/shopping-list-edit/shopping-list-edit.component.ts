@@ -5,7 +5,7 @@ import { ShoppingListService } from '../shopping-list.service';
 import { NgForm } from "@angular/forms"
 import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { AddIngredient, } from './store/shopping-list.actions'
+import { AddIngredient } from '../store/shopping-list.actions'
 
 @Component({
   selector: 'app-shopping-list-edit',

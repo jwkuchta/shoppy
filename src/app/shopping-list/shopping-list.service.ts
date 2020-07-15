@@ -1,12 +1,18 @@
 import { Ingredient } from '../shared/ingredient.model'
 // import { EventEmitter } from '@angular/core'
 import { Subject } from 'rxjs'
+import { Store } from '@ngrx/store'
+import * as Actions from '../shopping-list/store/shopping-list.actions'
+import { Injectable } from '@angular/core'
 
+@Injectable({providedIn: 'root'})
 export class ShoppingListService {
     
     // ingredientsChanged = new EventEmitter<Ingredient[]>()
     ingredientsChanged = new Subject<Ingredient[]>()
     startedEditing = new Subject<number>()
+
+    constructor(private store: Store<{ shoppingList: { ingredients: Ingredient[] } }>) {}
 
     private ingredients: Ingredient[] = [
         new Ingredient('Apples', 5),
@@ -27,12 +33,17 @@ export class ShoppingListService {
         this.ingredientsChanged.next(this.ingredients.slice())
     }
 
+    // addIngredients(ingredients: Ingredient[]) {
+    //     for (let ingredient of ingredients) {
+    //         this.addIngredient(ingredient)
+    //     }
+    //     // this.ingredientsChanged.emit(this.ingredients.slice())
+    //     this.ingredientsChanged.next(this.ingredients.slice())
+    // }
+
+    // with Store
     addIngredients(ingredients: Ingredient[]) {
-        for (let ingredient of ingredients) {
-            this.addIngredient(ingredient)
-        }
-        // this.ingredientsChanged.emit(this.ingredients.slice())
-        this.ingredientsChanged.next(this.ingredients.slice())
+        this.store.dispatch(new Actions.AddIngredients(ingredients))
     }
 
     updateIngredient(index: number, newIngredient: Ingredient) {
