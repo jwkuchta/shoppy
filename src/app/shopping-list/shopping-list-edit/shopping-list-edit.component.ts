@@ -46,13 +46,17 @@ export class ShoppingListEditComponent implements OnInit, OnDestroy {
     this.subsciption = this.store.select('shoppingList').subscribe(
       // we will receive the number of the item we need to edit
       storeData => {
-        this.editMode = true
+        if (storeData.editedIngredientIndex > -1) {
+          this.editMode = true
         this.editedItemIndex = storeData.editedIngredientIndex
         this.editedItem = storeData.editedIngredient
         this.slForm.setValue({
           name: this.editedItem.name,
           amount: this.editedItem.amount
         })
+        } else {
+          this.editMode = false
+        }
       }
     )
   }
@@ -67,7 +71,6 @@ export class ShoppingListEditComponent implements OnInit, OnDestroy {
       // replaced now that we use store
       this.store.dispatch(new UpdateIngredient({index: this.editedItemIndex, ingredient: newIngredient}))
     } else {
-      debugger
       // this.shoppingListService.addIngredient(newIngredient)
       // replaced now that we are using the store
       this.store.dispatch(new AddIngredient(newIngredient))

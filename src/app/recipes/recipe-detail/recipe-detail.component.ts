@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Recipe } from '../recipe.model'
-import { ShoppingListService } from 'src/app/shopping-list/shopping-list.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { RecipesService } from '../recipes.service';
 
@@ -16,7 +15,6 @@ export class RecipeDetailComponent implements OnInit {
   id: number
 
   constructor(
-    private slService: ShoppingListService,
     private router: Router,
     private route: ActivatedRoute,
     private recipeService: RecipesService
@@ -31,8 +29,7 @@ export class RecipeDetailComponent implements OnInit {
   }
 
   onAddToShoppingList() {
-      // debugger
-      this.slService.addIngredients(this.recipe.ingredients)
+    this.recipeService.addIngredientsToShoppingList(this.recipe.ingredients);
   }
 
   onRecipeEdit() {
@@ -41,7 +38,7 @@ export class RecipeDetailComponent implements OnInit {
   }
 
   onRecipeDelete() {
-    this.recipeService.deleteRecipe(this.recipe)
+    this.recipeService.deleteRecipe(this.id)
     this.router.navigate(['/recipes'])
   }
 
