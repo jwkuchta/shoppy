@@ -5,7 +5,7 @@ import { ShoppingListService } from '../shopping-list.service';
 import { NgForm } from "@angular/forms"
 import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { AddIngredient, UpdateIngredient, DeleteIngredient } from '../store/shopping-list.actions'
+import { AddIngredient, UpdateIngredient, DeleteIngredient, StopEdit } from '../store/shopping-list.actions'
 import * as fromShoppingList from '../store/shopping-list.reducer'
 
 @Component({
@@ -26,13 +26,29 @@ export class ShoppingListEditComponent implements OnInit, OnDestroy {
     private store: Store<fromShoppingList.AppState>
   ) {}
 
+  // ngOnInit() {
+  //   this.subsciption = this.shoppingListService.startedEditing.subscribe(
+  //     // we will receive the number of the item we need to edit
+  //     (index: number) => {
+  //       this.editMode = true
+  //       this.editedItemIndex = index
+  //       this.editedItem = this.shoppingListService.getIngredient(index)
+  //       this.slForm.setValue({
+  //         name: this.editedItem.name,
+  //         amount: this.editedItem.amount
+  //       })
+  //     }
+  //   )
+  // }
+
+  // with Store
   ngOnInit() {
-    this.subsciption = this.shoppingListService.startedEditing.subscribe(
+    this.subsciption = this.store.select('shoppingList').subscribe(
       // we will receive the number of the item we need to edit
-      (index: number) => {
+      storeData => {
         this.editMode = true
-        this.editedItemIndex = index
-        this.editedItem = this.shoppingListService.getIngredient(index)
+        this.editedItemIndex = storeData.editedIngredientIndex
+        this.editedItem = storeData.editedIngredient
         this.slForm.setValue({
           name: this.editedItem.name,
           amount: this.editedItem.amount
@@ -42,7 +58,6 @@ export class ShoppingListEditComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(form: NgForm) {
-    debugger
     console.log(form)
     const value = form.value
     const newIngredient = new Ingredient(value.name, value.amount)
@@ -65,6 +80,8 @@ export class ShoppingListEditComponent implements OnInit, OnDestroy {
   onClear() {
     this.slForm.reset()
     this.editMode = false
+    // notify the store
+    this.store.dispatch(new StopEdit())
   }
 
   onDelete() {
@@ -78,6 +95,7 @@ export class ShoppingListEditComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subsciption.unsubscribe()
+    this.store.dispatch(new StopEdit())
   }
 
 }

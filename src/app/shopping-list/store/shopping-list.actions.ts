@@ -3,7 +3,6 @@ import { Ingredient } from 'src/app/shared/ingredient.model';
 
 export class AddIngredient implements Action {
     readonly type = 'ADD_INGREDIENT'
-    // payload: Ingredient
     constructor(public payload: Ingredient) {}
 }
 
@@ -22,4 +21,15 @@ export class DeleteIngredient implements Action {
     constructor(public payload: Ingredient) {}
 }
 
-export type ShoppingListActions = AddIngredient | AddIngredients | UpdateIngredient | DeleteIngredient
+export class StartEdit implements Action {
+    readonly type = 'START_EDIT'
+    constructor(public payload: number) {}
+}
+
+export class StopEdit implements Action {
+    readonly type = 'STOP_EDIT'
+    // no need for payload
+}
+
+export type ShoppingListActions = 
+AddIngredient | AddIngredients | UpdateIngredient | DeleteIngredient | StartEdit | StopEdit
