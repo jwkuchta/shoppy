@@ -14,7 +14,7 @@ import { Store } from '@ngrx/store';
 export class ShoppingListComponent implements OnInit, OnDestroy {
   // private ingChangedSub: Subscription
   // ingredients: Ingredient[]
-  // now ingredients is an observable, not an array
+  // now ingredients is an observable, not an array. Because of this change, we have to alter the template
   ingredients: Observable<{ ingredients: Ingredient[]}>
   
 
@@ -25,13 +25,12 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
     ) { }
 
   ngOnInit(): void {
-    this.ingredients = this.store.select('shoppingList') // this returns an Observable so we had to change the type of ingredients
+    // this returns an Observable so we had to change the type of ingredients
+    this.ingredients = this.store.select('shoppingList') 
     // this.ingredients = this.shoppingListService.getIngredients()
     // this.ingChangedSub = this.shoppingListService.ingredientsChanged.subscribe((ingredients: Ingredient[]) => {
     //   this.ingredients = ingredients
     // })
-
-    this.loggingServ.printLog('hello from the shopping list component')
   }
 
   ngOnDestroy() :void {

@@ -5,6 +5,7 @@ import { ShoppingListService } from '../shopping-list.service';
 import { NgForm } from "@angular/forms"
 import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
+import { AddIngredient, } from './store/shopping-list.actions'
 
 @Component({
   selector: 'app-shopping-list-edit',
@@ -47,7 +48,9 @@ export class ShoppingListEditComponent implements OnInit, OnDestroy {
     if ( this.editMode ) {
       this.shoppingListService.updateIngredient(this.editedItemIndex, newIngredient)
     } else {
-      this.shoppingListService.addIngredient(newIngredient)
+      // this.shoppingListService.addIngredient(newIngredient)
+      // replaced now that we are using the store
+      this.store.dispatch(new AddIngredient(newIngredient))
     } 
     // it appears to work as expected but we are stuck in editMode. It is important we leave the editMode
     this.editMode = false
