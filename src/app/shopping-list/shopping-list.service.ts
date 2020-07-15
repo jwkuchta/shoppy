@@ -4,6 +4,7 @@ import { Subject } from 'rxjs'
 import { Store } from '@ngrx/store'
 import * as Actions from '../shopping-list/store/shopping-list.actions'
 import { Injectable } from '@angular/core'
+import * as fromShoppingList from '../shopping-list/store/shopping-list.reducer'
 
 @Injectable({providedIn: 'root'})
 export class ShoppingListService {
@@ -12,7 +13,7 @@ export class ShoppingListService {
     ingredientsChanged = new Subject<Ingredient[]>()
     startedEditing = new Subject<number>()
 
-    constructor(private store: Store<{ shoppingList: { ingredients: Ingredient[] } }>) {}
+    constructor(private store: Store<fromShoppingList.AppState>) {}
 
     private ingredients: Ingredient[] = [
         new Ingredient('Apples', 5),
